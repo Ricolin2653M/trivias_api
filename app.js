@@ -12,7 +12,7 @@ const app = express();
 
 // Configuración del middleware CORS
 app.use(cors({
-  origin: 'http://localhost:5173', // URL de tu frontend
+  origin: '*', // URL de tu frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
   credentials: true // Habilitar el envío de cookies si las usas
 }));
