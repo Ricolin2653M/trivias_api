@@ -5,6 +5,10 @@ const router = Router();
 
 router.post("/", resultadoCtrl.createResultado);
 router.get("/", resultadoCtrl.getResultados);
+
+// Nuevo endpoint para obtener trivias realizadas por un usuario
+router.get("/usuario/:idUsuario", resultadoCtrl.obtenerTriviasRealizadas);
+
 router.get("/:resultadoId", resultadoCtrl.getResultadoById);
 router.get("/trivia/:triviaId", resultadoCtrl.getResultadosPorTrivia);
 router.get("/promedio/usuario/:idUsuario", resultadoCtrl.obtenerPromedioUsuario);

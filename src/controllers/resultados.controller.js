@@ -247,7 +247,23 @@ export const obtenerTopPuntaje = async (req, res) => {
   }
 };
 
+//nuevo
+export const obtenerTriviasRealizadas = async (req, res) => {
+  try {
+    const { idUsuario } = req.params;
 
+    // Buscar los resultados asociados al usuario
+    const resultados = await Resultado.find({ idUsuario }).populate("idTrivia");
+
+    // Extraer los IDs de las trivias realizadas
+    const triviasRealizadas = resultados.map((resultado) => resultado.idTrivia._id);
+
+    res.status(200).json(triviasRealizadas);
+  } catch (error) {
+    console.error("Error al obtener trivias realizadas:", error);
+    res.status(500).json({ message: "Error al obtener las trivias realizadas por el usuario." });
+  }
+};
 
 // Obtener todos los resultados de un usuario por trivia
 export const obtenerHistorialUsuario = async (req, res) => {
